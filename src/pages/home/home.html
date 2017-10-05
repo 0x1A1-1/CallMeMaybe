@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Call Me Maybe?</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="newModal()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let user of users" #slidingItem margin-bottom>
+      <a ion-item (click)="openModal({user: user})">
+        <ion-avatar item-left>
+          <img src="assets/img/contact.png">
+        </ion-avatar>
+        <h2>{{user.name}}</h2>
+        <h4 *ngIf="user.past==false">
+          In {{user.days}} Days
+        </h4>
+        <h4 class="danger" *ngIf="user.past==true">
+          Past Due {{user.days}} Days
+        </h4>
+      </a>
+      <ion-item-options side="left">
+        <button ion-button color="primary" (click)="finished(slidingItem, user)">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="text({cell: user.cell})">
+          <ion-icon name="chatbubbles"></ion-icon>
+          Text
+        </button>
+        <button ion-button color="secondary" (click)="call({cell: user.cell})">
+          <ion-icon name="call"></ion-icon>
+          Call
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- Debug section -->
+  <!-- <ion-card>
+    <ion-card-title>
+      <ion-card-content>
+        <h4>
+          PRINT MSG
+        </h4>
+        <h4>
+          {{msg}}
+      </h4>
+      <button ion-button block color="danger" (click)="update()">update date</button>
+    </ion-card-content>
+    </ion-card-title>
+  </ion-card> -->
+</ion-content>

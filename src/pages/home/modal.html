@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Description
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="saveValid()">
+        <span ion-text color="primary" showWhen="ios">Save</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-avatar item-center>
+        <img src="assets/img/contact.png">
+      </ion-avatar>
+      <form>
+        <ion-item>
+          <ion-label>Name:</ion-label>
+          <ion-input [(ngModel)]="input.name" name="name" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Phone:</ion-label>
+          <ion-input [(ngModel)]="input.cell" name="cell" type="tel"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Frequency (days):</ion-label>
+          <ion-input [(ngModel)]="input.freq" name="freq" type="number"></ion-input>
+        </ion-item>
+      </form>
+
+      <button margin-top ion-button block color="primary" *ngIf="user.id==''" (click)="import()">Import</button>
+      <button margin-top ion-button block color="danger" *ngIf="user.id!=''" (click)="delete()" class="blkbutton">Delete</button>
+
+      <!-- <ion-item *ngFor="let item of character['items']">
+        {{item.title}}
+        <ion-note item-right>
+          {{item.note}}
+        </ion-note>
+      </ion-item> -->
+  </ion-list>
+</ion-content>

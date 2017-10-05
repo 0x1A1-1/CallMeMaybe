@@ -1,0 +1,15 @@
+{
+  "name": "CallMeMaybe",
+  "app_id": "447295e1",
+  "v2": true,
+  "typescript": true,
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}
